@@ -140,3 +140,248 @@ footer {
     text-indent: 1cm;
     text-shadow: 4px 3px 3px black;
 }
+
+.citation1 {
+    border: 4px blue;
+    padding: 10px;
+    border-radius: 15px;
+    margin: 30px;
+    box-shadow: 15px 5px 10px blue;
+    background-color: blueviolet;
+}
+.text1 {
+    font-size: 25px;
+    font-weight: bolder;
+    text-align: justify;
+}
+.author1 {
+    text-align: right;
+    font-size: 20px;
+    opacity: 1;
+    margin-top: 40px;
+    margin-right: 40%;
+}
+
+.c2 {
+    border: 5px solid orange;
+    padding: 20px;
+    border-radius: 5px;
+    margin: 10px;
+    box-shadow: 10px 10px 15px orange;
+    background: linear-gradient(to right, red, yellow);
+}
+.t2 {
+    font-size: 20px;
+    text-decoration-color: blueviolet;
+    text-align: center;
+}
+.a2 {
+    text-align: center;
+    font-size: 20px;
+    opacity: 0.5;
+    margin-top: 20px;
+    margin-right: 0%;
+}
+
+.c3 {
+    border: 2px solid lightgreen;
+    padding: 10px;
+    border-radius: 10px;
+    margin: 25px;
+    box-shadow: 15px 7px 10px green;
+    background-color: khaki;
+}
+.t3 {
+    font-size: 25px;
+    font-weight: 500;
+    color: darkgreen;
+    text-align: center;
+}
+.a3 {
+    text-align: right;
+    font-size: 20px;
+    opacity: 1;
+    margin-top: 15px;
+    margin-right: 10%;
+}
+
+.c4 {
+    border: 4px solid purple;
+    padding: 20px;
+    border-radius: 7px;
+    margin: 20px;
+    box-shadow: 9px 4px 1px darkorchid;
+    background-color: lavender;
+}
+.t4 {
+    font-size: 17px;
+    font-weight: bolder;
+    color: blue;
+    text-align: left;
+}
+.a4 {
+    text-align: left;
+    font-size: 14px;
+    opacity: 0.7;
+    margin-top: 23px;
+    margin-left: 5%;
+}
+
+.c5 {
+    border: 6px solid lightskyblue;
+    padding: 23px;
+    border-radius: 18px;
+    margin: 10px;
+    box-shadow: 15px 9px 12px powderblue;
+    background: linear-gradient(to right, blue, lightskyblue);
+}
+.t5 {
+    font-size: 21px;
+    font-weight: bolder;
+    color: purple;
+    text-align: center;
+}
+.a5 {
+    text-align: right;
+    font-size: 16px;
+    opacity: 0.4;
+    margin-top: 14px;
+    margin-right: 0%;
+}
+
+.c6 {
+    border: 8px solid pink;
+    padding: 17px;
+    border-radius: 5px;
+    margin: 15px;
+    box-shadow: 17px 10px 17px red;
+    background: linear-gradient(to right top, pink, lightpink);
+}
+.t6 {
+    font-size: 18px;
+    font-weight: 400;
+    color: black;
+    text-align: right;
+}
+.a6 {
+    text-align: left;
+    font-size: 10px;
+    opacity: 1;
+    margin-top: 10px;
+    margin-left: 20%;
+}
+
+.c7 {
+    border: 4px solid rgb(10, 108, 111);
+    padding: 10px;
+    border-radius: 17px;
+    margin: 10px;
+    box-shadow: 15px 10px 10px rgb(121, 195, 234);
+    background: linear-gradient(to right top, rgb(131, 205, 242), rgb(76, 221, 237));
+}
+.t7 {
+    font-size: 30px;
+    color: rgb(57, 8, 182);
+    text-align: center;
+}
+.a7 {
+    text-align: right;
+    font-size: 20px;
+    opacity: 0.4;
+    margin-top: 14px;
+    margin-left: 20%;
+}
+
+.c8 {
+    border: 3px solid rgb(245, 222, 20);
+    padding: 24px;
+    border-radius: 20px;
+    margin: 20px;
+    box-shadow: 7px 4px 10px rgb(247, 193, 77);
+    background: linear-gradient(to right top, orange, lightgreen);
+}
+.t8 {
+    font-size: 23px;
+    font-weight: lighter;
+    color: red;
+    text-align: left;
+    font-style: italic;
+}
+.a8 {
+    text-align: left;
+    font-size: 17px;
+    opacity: 0.7;
+    margin-top: 15px;
+    margin-left: 0%;
+}
+
+.c9 {
+    border: 7px solid rgb(134, 235, 113);
+    padding: 18px;
+    border-radius: 11px;
+    margin: 16px;
+    box-shadow: 12px 7px 7px rgb(130, 205, 56);
+    background-color: antiquewhite;
+}
+.t9 {
+    font-size: 27px;
+    font-weight: bolder;
+    color: rgb(237, 143, 20);
+    text-align: center;
+    font-style: initial;
+}
+.a9 {
+    text-align: center;
+    font-size: 18px;
+    opacity: 1;
+    margin-top: 12px;
+    margin-left: 0%;
+}
+
+.c10 {
+    border: 5px solid rgb(176, 21, 200);
+    padding: 15px;
+    border-radius: 20px;
+    margin: 15px;
+    box-shadow: 15px 8px 7px rgb(236, 58, 236);
+    background-color: azure;
+}
+.t10 {
+    font-size: 19px;
+    font-weight: 300;
+    color: rgb(95, 9, 89);
+    text-align: center;
+    font-style: italic;
+}
+.a10 {
+    text-align: left;
+    font-size: 15px;
+    opacity: 0.7;
+    margin-top: 20px;
+    margin-left: 0%;
+}
+
+a {
+    color: rgb(150, 19, 144);
+    text-decoration: none;
+}
+
+a:link {
+    color: red;
+}
+
+a:visited {
+    font-weight: bold;
+}
+
+a:hover {
+    color: lightpink;
+    text-decoration: underline;
+    background-color: rgb(228, 40, 122);
+    font-style: italic;
+}
+
+a:active {
+    color: black;
+    opacity: 0.5;
+}
