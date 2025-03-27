@@ -421,3 +421,178 @@ div.h1 {
     text-align: center;
     font-style: italic;
 }
+
+div.t2 div {
+    display: none;
+}
+
+.t2:hover div {
+    display: block;
+    display: flex;
+    flex-direction: column;
+}
+
+.t2 {
+    width: 500px;
+    height: auto;
+    border: 2px solid orange;
+    display: inline-block;
+    vertical-align: top;
+    margin: 25px auto;
+    margin-top: 15px;
+    transition: all 3s ease-in-out 0.5s;
+    box-shadow: 10px 10px 15px rgb(224, 255, 22);
+    background-color: pink;
+    overflow: hidden;
+    max-height: 150px;
+    cursor: pointer;
+}
+
+.t2:hover {
+    padding: 20px;
+    box-shadow: 5px 5px 10px rgb(235, 19, 30);
+    background-color: blueviolet;
+    color: rgb(0, 0, 0);
+    border: 5px solid red;
+    margin: 15px 15px 15px 15px;
+    transition: 3s;
+    max-height: 1000px;
+    font-style: italic;
+}
+
+div.t2 {
+    background-color: rgb(234, 247, 92);
+    padding: 15px 15px 15px 15px;
+    border-radius: 15px;
+    border: 5px solid rgb(115, 5, 149);
+}
+
+div.t2:hover {
+    background-color: ghostwhite;
+    border: 6px solid rgb(50, 241, 12);
+}
+
+div.t3 div {
+    display: none
+}
+
+.t3:hover div {
+    display: block;
+}
+
+.t3 {
+    width: 500px;
+    height: auto;
+    border: 2px solid rgb(0, 221, 255);
+    display: inline-block;
+    vertical-align: top;
+    margin: 25px auto;
+    margin-top: 15px;
+    transition: all 3s ease-in-out 0.5s;
+    box-shadow: 8px 8px 8px rgb(241, 8, 12);
+    background-color: pink;
+    overflow: hidden;
+    max-height: 150px;
+    cursor: pointer;
+    color:blue
+}
+
+.t3:hover {
+    padding: 20px;
+    box-shadow: 8px 8px 10px rgb(10, 241, 233);
+    background-color: rgb(131, 236, 79);
+    color: rgb(0, 0, 0);
+    border: 10px solid rgb(28, 139, 31);
+    margin: 15px 15px 15px 15px;
+    transition: 3s;
+    max-height: 1000px;
+    font-style: italic;
+}
+
+div.t4 div {
+    display: none
+}
+
+.t4:hover div {
+    display: block;
+}
+
+.t4 {
+    width: 500px;
+    height: auto;
+    border: 9px solid rgb(83, 10, 229);
+    border-radius: 10px;
+    display: inline-block;
+    vertical-align: top;
+    margin: 25px auto;
+    margin-top: 15px;
+    transition: all 3s ease-in-out 0.5s;
+    background-color: rgb(136, 189, 235);
+    overflow: hidden;
+    max-height: 150px;
+    cursor: pointer;
+    color:rgb(255, 255, 255)
+}
+
+.t4:hover h1 {
+    text-align: center;
+    font-style: italic;
+}
+
+.t4:hover {
+    padding: 20px;
+    box-shadow: 8px 8px 10px rgb(10, 241, 233);
+    background-color: rgb(238, 244, 135);
+    border-radius: 3px;
+    color: rgb(0, 0, 0);
+    border: 10px solid rgb(255, 171, 36);
+    margin: 15px 15px 15px 15px;
+    transition: 3s;
+    max-height: 1000px;
+    font-size: 15px;
+}
+
+
+div.t5 div {
+    display: none
+}
+
+.t5:hover div {
+    display: block;
+}
+
+.t5 {
+    width: 500px;
+    height: auto;
+    border: 3px solid rgb(144, 5, 168);
+    border-radius: 5px;
+    display: inline-block;
+    vertical-align: top;
+    margin: 25px auto;
+    box-shadow: 7px 7px 10px fuchsia;
+    margin-top: 15px;
+    transition: all 3s ease-in-out 0.5s;
+    background-color: rgb(224, 139, 247);
+    overflow: hidden;
+    max-height: 150px;
+    cursor: pointer;
+    color:rgb(0, 0, 0)
+}
+
+.t5:hover h1 {
+    text-align: center;
+    font-style: italic;
+}
+
+.t5:hover {
+    padding: 20px;
+    box-shadow: 2px 2px 2px rgb(149, 4, 147);
+    background-color: rgb(249, 80, 193);
+    border-radius: 8px;
+    color: rgb(255, 255, 255);
+    border: 12px solid rgb(79, 216, 247);
+    margin: 15px 15px 15px 15px;
+    transition: 3s;
+    max-height: 1000px;
+    font-size: 20px;
+}
