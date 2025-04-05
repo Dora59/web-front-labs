@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Пятина Дарья Вадимовна. Position</title>
+    <link rel="stylesheet" href="../main.css">
+    <link rel="shortcut icon" href="C:\Users\User\web-front-labs\lab3\apple-touch-icon.png" type="image/x-icon">
+    <style>
+        div {
+            width: 300px;
+            height: 70px;
+            line-height: 70px;
+            text-align: center;
+            background-color: blanchedalmond;
+            border: 1px dotted purple;
+            margin: 15px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .position-relative {
+            position: relative;
+            left: 150px;
+            top: -130px;
+            z-index: 0;
+            transition: all 2s ease-in-out;
+        }
+
+        .position-relative:hover {
+            z-index: 2;
+        }
+
+        .position-absolute {
+            position: absolute;
+            left: 300px;
+            transition: all 2s ease-in-out;
+        }
+
+        .position-absolute:hover {
+            transform: translate(-50%, -50%) scale(1.1);
+            background-color: blue;
+            box-shadow: 0 10px 20px crimson;
+            z-index: 10; 
+        }
+
+    </style>
+</head>
+<body>
+    <header>
+        НГТУ, ФБ, Лабораторная работа 4
+    </header>
+
+    <main>
+        <div>static</div>
+        <div>static</div>
+        <div class="position-relative">relative</div>
+        <div>static</div>
+        <div>static</div>
+        <div class="position-absolute">absolute</div>
+        <div>static</div>
+        <div>static</div>
+        <div>static</div>
+        <div>static</div>
+    </main>
+
+    <footer>
+        &copy; Дарья Пятина, ФБИ-31, 2 курс, 2023
+    </footer>
+    
+</body>
+</html>
