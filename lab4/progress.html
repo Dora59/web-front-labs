@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Пятина Дарья Вадимовна. Панель прогресса</title>
+    <link rel="stylesheet" href="../main.css">
+    <link rel="shortcut icon" href="C:\Users\User\web-front-labs\lab3\apple-touch-icon.png" type="image/x-icon">
+    <style>
+        main {
+            margin: 200px auto 5px;
+            border: 10px solid darkmagenta;
+            width: 500px;
+            height: 150px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+    
+        .block2 {
+            text-align: center;
+            width: 350px;
+        }
+    
+        .progress-title {
+            margin-bottom: 10px;
+            font-size: 20px;
+            font-weight: bold;
+            font-style: italic;
+        }
+    
+        .progress-panel {
+            width: 100%;
+            height: 30px;
+            background: rgb(234, 228, 228);
+            border-radius: 5px;
+            margin-bottom: 20px;
+            position: relative;
+        }
+    
+        .progress-bar {
+            height: 100%;
+            width: 0%;
+            background: linear-gradient(to right, fuchsia, lightskyblue);
+        }
+    
+        @keyframes fill {
+            from { width: 0%; }
+            to   { width: 100%; }
+        }
+    
+        .hold-button {
+            padding: 12px 24px;
+            font-size: 18px;
+            border: none;
+            background-color: #72b4f3;
+            color: rgb(0, 0, 0);
+            border-radius: 5px;
+            cursor: pointer;
+            box-shadow: 0 4px 7px rgb(82, 123, 247);
+            transition: box-shadow 0.3s ease;
+        }
+    
+        .hold-button:hover {
+            box-shadow: 4px 8px 15px rgba(164, 5, 69, 0.4);
+        }
+    
+        .hold-button:active {
+            box-shadow: none;
+        }
+    
+        .block2:has(.hold-button:active) .progress-bar {
+            animation: fill 5s linear forwards;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        НГТУ, ФБ, Лабораторная работа 4
+    </header>
+
+    <main>
+        <div class="block2">
+            <div class="progress-title">Степень прогресса</div>
+        
+            <div class="progress-panel">
+              <div class="progress-bar"></div>
+            </div>
+        
+            <div class="button-wrapper">
+              <button class="hold-button">Нажмите и удерживайте</button>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        &copy; Дарья Пятина, ФБИ-31, 2 курс, 2023
+    </footer>
+</body>
+</html>
