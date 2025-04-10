@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Облако тегов</title>
+    <link rel="stylesheet" href="../main.css">
+    <link rel="shortcut icon" href="C:\Users\User\web-front-labs\lab3\apple-touch-icon.png" type="image/x-icon">
+    <style>
+
+    .tag {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      z-index: 1;
+      animation: float 5s ease-in-out infinite;
+      transition: transform 0.3s, box-shadow 0.3s, z-index 0.4s;
+    }
+
+    .tag:hover {
+      transform: scale(1.4);
+      box-shadow: 3px 7px 15px rgba(26, 163, 226, 0.4);
+      animation-play-state: paused;
+      font-size: 40px;
+      cursor: pointer;
+      transition: all 2s ease-in-out;
+      color: black;
+    }
+
+    @keyframes float {
+      0%   { transform: translate(0, 0) rotate(0deg); }
+      50%  { transform: translate(17px, -17px) rotate(2deg); }
+      100% { transform: translate(0, 0) rotate(0deg); }
+    }
+
+    .tag1 {
+        top: ;
+        left: ;
+        font-size: 27px;
+        font-family: 'Courier New', Courier, monospace;
+        color: red;
+        rotate: -10deg;
+    }
+
+    .tag2 {
+        top: 20%;
+        left: 60%;
+        font-size: 30px;
+        font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+        color: rgb(236, 151, 33);
+        rotate: -3deg;
+    }
+
+    .tag3 {
+        top: 30%;
+        left: 30%;
+        font-size: 34px;
+        font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+        color: rgb(247, 243, 36);
+        rotate: 4deg;
+    }
+
+    .tag4 {
+        top: 40%;
+        left: 70%;
+        font-size: 33px;
+        font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+        color: rgb(132, 13, 146);
+        rotate: -7deg;
+    }
+
+    .tag5 {
+        top: 50%;
+        left: 20%;
+        font-size: 34px;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        color: rgb(195, 18, 154);
+        rotate: -8deg;
+        font-style: italic;
+    }
+
+    .tag6 {
+        top: 60%;
+        left: 80%;
+        font-size: 36px;
+        font-family: Verdana, Geneva, Tahoma, sans-serif;
+        color: rgb(43, 97, 223);
+        rotate: 0deg;
+        font-weight: bolder;
+    }
+
+    .tag7 {
+        top: 70%;
+        left: 30%;
+        font-size: 38px;
+        font-family: 'Times New Roman', Times, serif;
+        color: rgb(4, 80, 48);
+        rotate: 17deg;
+        box-shadow: 3px 5px 10px pink;
+    }
+
+    .tag8 {
+        top: 75%;
+        left: 10%;
+        font-size: 28px;
+        font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+        color: rgb(40, 160, 162);
+        rotate: 10deg;
+    }
+
+    .tag9 {
+        top: 20%;
+        left: 85%;
+        font-size: 40px;
+        font-family: cursive;
+        color: rgb(230, 12, 211);
+        rotate: -5deg;
+        font-weight: bolder;
+    }
+
+    .tag10 {
+        top: 35%;
+        left: 55%;
+        font-size: 37px;
+        font-family: monospace;
+        color: rgb(20, 127, 152);
+        rotate: -15deg;
+        font-weight: bolder;
+    }
+
+    .tag11 {
+        top: 65%;
+        left: 60%;
+        font-size: 47px;
+        font-family: sans-serif;
+        color: rgb(56, 231, 208);
+        rotate: 0deg;
+        font-weight: bolder;
+    }
+
+    .tag12 {
+        top: 80%;
+        left: 90%;
+        font-size: 50px;
+        font-family: unset;
+        color: rgb(197, 11, 54);
+        rotate: 12deg;
+    }
+
+    .tag13 {
+        top: 45%;
+        left: 10%;
+        font-size: 46px;
+        font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+        color: rgb(105, 29, 47);
+        rotate: 9deg;
+    }
+
+    .tag14 {
+        top: 25%;
+        left: 40%;
+        font-size: 55px;
+        font-family: fantasy;
+        color: rgb(5, 174, 50);
+        rotate: -7deg;
+        box-shadow: 4px 6px 15px rgb(236, 151, 33);
+    }
+
+    .tag15 {
+        top: 85%;
+        left: 27%;
+        font-size: 50px;
+        font-family: serif;
+        color: rgb(190, 174, 67);
+        rotate: -15deg;
+    }
+  </style>
+</head>
+<body>
+
+    <header>
+        НГТУ, ФБ, Лабораторная работа 2
+    </header>
+
+  <div class="tag tag1">Position</div></div>
+  <div class="tag tag2">Relative</div>
+  <div class="tag tag3">Absolute</div>
+  <div class="tag tag4">Static</div>
+  <div class="tag tag5">Fixed</div>
+  <div class="tag tag6">Overflow</div>
+  <div class="tag tag7">Z-index</div>
+  <div class="tag tag8">Bottom</div>
+  <div class="tag tag9">Transform</div>
+  <div class="tag tag10">Top</div>
+  <div class="tag tag11">box-shadow</div>
+  <div class="tag tag12">right</div>
+  <div class="tag tag13">left</div>
+  <div class="tag tag14">text-align</div>
+  <div class="tag tag15">line-height</div>
+
+    <footer>
+        &copy; Дарья Пятина, ФБИ-31, 2 курс, 2023
+    </footer>
+
+</body>
+</html>
