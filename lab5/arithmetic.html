@@ -1,1 +1,61 @@
-ff
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Пятина Д.В. Лабораторная 5</title>
+    <link rel="stylesheet" href="../main.css">
+    <link rel="shortcut icon" href="C:\Users\User\web-front-labs\lab3\apple-touch-icon.png" type="image/x-icon">
+    <script>
+        function showSum() {
+            let a = 5874;
+            let b = 6974;
+            let result = a + b;
+            alert(' Сумма ' + a + ' и ' + b + ' равна ' + result);
+        }
+
+    </script>
+    <style>
+        .body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .conteiner {
+            display: flex;
+            justify-content: center;
+            margin: 10px;
+        }
+        .message {
+            height: 45px;
+            width: 150px;
+            background-color: lightgreen;
+            border: 3px solid;
+            border-radius: 7px;
+            text-align: center;
+            justify-content: center;
+            display: inline;
+            margin: 10px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        НГТУ, ФБ, Лабораторная работа 5. Вывод суммы
+    </header>
+
+    <main>
+        <div class="conteiner">
+            <div class="message" onclick="showSum()">Сколько будет 5874+6974?</div>
+            <div class="message">Узнать, кто автор страницы</div>
+        </div>    
+    </main>
+
+    <footer>
+        &copy; Дарья Пятина, ФБИ-31, 2 курс, 2023
+    </footer>
+</body>
+</html>
