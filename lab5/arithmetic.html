@@ -14,12 +14,30 @@
             alert(' Сумма ' + a + ' и ' + b + ' равна ' + result);
         }
 
+        function showAuthor() {
+            let author = 'Автором страницы является: \nПятина Дарья Вадимовна';
+            alert(author) 
+        }
+
+        function showM3() {
+            let m = 'Привет, странник интернета!\n"Ты искал — сайт нашел. Что дальше?"'
+            alert(m)
+        }
+
     </script>
     <style>
         .body {
             display: flex;
             justify-content: center;
             align-items: center;
+        }
+
+        header {
+            cursor: grab;
+        }
+
+        footer {
+            cursor: grab;
         }
 
         .conteiner {
@@ -43,18 +61,18 @@
 </head>
 
 <body>
-    <header>
+    <header onclick="showAuthor()">
         НГТУ, ФБ, Лабораторная работа 5. Вывод суммы
     </header>
 
     <main>
         <div class="conteiner">
             <div class="message" onclick="showSum()">Сколько будет 5874+6974?</div>
-            <div class="message">Узнать, кто автор страницы</div>
+            <div class="message" onclick="showAuthor()">Узнать, кто автор страницы</div>
         </div>    
     </main>
 
-    <footer>
+    <footer ondblclick="showM3()">
         &copy; Дарья Пятина, ФБИ-31, 2 курс, 2023
     </footer>
 </body>
