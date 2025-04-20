@@ -46,6 +46,53 @@
             let result = f * g;
             alert(' Произведение чисел ' + f + ' и ' + g + ' равна ' + result);
         }
+        
+        function showDiv() {
+            let inputA1 = document.getElementById('numberA1');
+            let inputB1 = document.getElementById('numberB1');
+
+            let a = parseInt(inputA1.value);
+            let b = parseInt(inputB1.value);
+            if(b==0) {
+                alert('На ноль делить нельзя!');
+                inputB1.focus();
+                inputB1.select();
+                inputB1.style.color = 'red';
+                inputB1.style.borderColor = 'red';
+                return;
+            }
+
+            inputB1.style.color = '';
+            inputB1.style.borderColor = '';
+
+            if(isNaN(a)) {
+                alert('Введите числовое значение в первое поле');
+                inputA1.focus();
+                inputA1.select();
+                inputA1.style.color = 'red';
+                inputA1.style.borderColor = 'red';
+                return;
+            }
+
+            inputA1.style.color = '';
+            inputA1.style.borderColor = '';
+
+            if(isNaN(b)) {
+                alert('Введите числовое значение во второе поле');
+                inputB1.focus();
+                inputB1.select();
+                inputB1.style.color = 'red';
+                inputB1.style.borderColor = 'red';
+                return;
+            }
+
+            inputB1.style.color = '';
+            inputB1.style.borderColor = '';
+
+            let result = a / b;
+            alert(' Отношение чисел ' + a + ' и ' + b + ' равна ' + result);
+        }
+
 
     </script>
     <style>
@@ -120,8 +167,13 @@
         <div class="conteiner">
             <div class="message1" onclick="showMult()">Найти произведение чисел</div>
         </div>
-    </main>
 
+        <label>Первое число: <input type="number" value="5874" id="numberA1"></label><br>
+        <label>Второе число: <input type="number" value="6974" id="numberB1"></label><br>
+        <div class="conteiner">
+            <div class="message1" onclick="showDiv()">Найти отношение чисел</div>
+        </div> 
+    </main>    
     <footer ondblclick="showM3()">
         &copy; Дарья Пятина, ФБИ-31, 2 курс, 2023
     </footer>
