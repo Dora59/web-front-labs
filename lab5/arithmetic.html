@@ -93,6 +93,57 @@
             alert(' Отношение чисел ' + a + ' и ' + b + ' равна ' + result);
         }
 
+        function showDegree() {
+            let inputAElement = document.getElementById('number1');
+            let inputBElement = document.getElementById('number2');
+
+            let a = parseFloat(inputAElement.value);
+            let b = parseFloat(inputBElement.value);
+
+            if(a === 0 && b === 0) {
+                alert('Оба числа не могут быть нулями одновременно!\nИсправьте значения.');
+                inputAElement.style.color = 'red';
+                inputAElement.style.borderColor = 'red';
+                inputBElement.style.color = 'red';
+                inputBElement.style.borderColor = 'red';
+                inputAElement.focus();
+                inputAElement.select();
+                inputBElement.focus();
+                inputBElement.select();
+                return;
+            }
+
+            inputAElement.style.color = '';
+            inputAElement.style.borderColor = '';
+
+            inputBElement.style.color = '';
+            inputBElement.style.borderColor = '';
+
+            if(isNaN(a)) {
+                alert('Первое поле содержит не числовые данные!');
+                inputAElement.focus();
+                inputAElement.select();
+                inputAElement.style.color = 'red';
+                inputAElement.style.borderColor = 'red';
+                return;
+            }
+            inputAElement.style.color = '';
+            inputAElement.style.borderColor = '';
+
+            if(isNaN(b)) {
+                alert('Второе поле содержит не числовые данные!');
+                inputBElement.focus();
+                inputBElement.select();
+                inputBElement.style.color = 'red';
+                inputBElement.style.borderColor = 'red';
+                return;
+            }
+            inputBElement.style.color = '';
+            inputBElement.style.borderColor = '';
+
+            let result = a ** b;
+            alert(' Возведение числа ' + a + ' в степень ' + b + ' равно ' + result);
+        }
 
     </script>
     <style>
@@ -112,13 +163,18 @@
 
         .conteiner {
             display: flex;
-            justify-content: center;
+            justify-content: left;
             margin: 10px;
+        }
+
+        input {
+            border: 2px solid purple;
+            box-shadow: 2px 3px 3px lightpink;
         }
         .message {
             height: 45px;
             width: 150px;
-            background-color: lightgreen;
+            background-color: rgb(236, 123, 251);
             border: 3px solid;
             border-radius: 7px;
             text-align: center;
@@ -131,7 +187,7 @@
         .message1 {
             height: 67px;
             width: 155px;
-            background-color: lightgreen;
+            background-color: rgb(236, 123, 251);
             border: 3px solid;
             border-radius: 7px;
             text-align: center;
@@ -140,6 +196,7 @@
             margin: 10px;
             cursor: pointer;
         }
+        
     </style>
 </head>
 
@@ -172,6 +229,12 @@
         <label>Второе число: <input type="number" value="6974" id="numberB1"></label><br>
         <div class="conteiner">
             <div class="message1" onclick="showDiv()">Найти отношение чисел</div>
+        </div> 
+
+        <label>Первое число: <input type="text" id="number1"></label><br>
+        <label>Второе число: <input type="text" id="number2"></label><br>
+        <div class="conteiner">
+            <div class="message" onclick="showDegree()">Возвести в степень</div>
         </div> 
     </main>    
     <footer ondblclick="showM3()">
