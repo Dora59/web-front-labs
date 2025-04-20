@@ -27,6 +27,26 @@
             alert(m)
         }
 
+        function showDiff() {
+            let inputC = document.getElementById('numberC').value;
+            let inputD = document.getElementById('numberD').value;
+
+            let c = parseInt(inputC);
+            let d = parseInt(inputD);
+            let result = c - d;
+            alert(' Разность ' + c + ' и ' + d + ' равна ' + result);
+        }
+
+        function showMult() {
+            let inputF = document.getElementById('numberF').value;
+            let inputG = document.getElementById('numberG').value;
+
+            let f = parseInt(inputF);
+            let g = parseInt(inputG);
+            let result = f * g;
+            alert(' Произведение чисел ' + f + ' и ' + g + ' равна ' + result);
+        }
+
     </script>
     <style>
         .body {
@@ -60,6 +80,19 @@
             margin: 10px;
             cursor: pointer;
         }
+
+        .message1 {
+            height: 67px;
+            width: 155px;
+            background-color: lightgreen;
+            border: 3px solid;
+            border-radius: 7px;
+            text-align: center;
+            justify-content: center;
+            display: inline;
+            margin: 10px;
+            cursor: pointer;
+        }
     </style>
 </head>
 
@@ -74,7 +107,19 @@
         <div class="conteiner">
             <div class="message" onclick="showSum()">Найти сумму чисел</div>
             <div class="message" onclick="showAuthor()">Узнать, кто автор страницы</div>
-        </div>    
+        </div>
+
+        <label>Первое число: <input type="number" id="numberC"></label><br>
+        <label>Второе число: <input type="number" id="numberD"></label><br>
+        <div class="conteiner">
+            <div class="message" onclick="showDiff()">Найти разность чисел</div>
+        </div>
+
+        <label>Первое число: <input type="number" id="numberF"></label><br>
+        <label>Второе число: <input type="number" id="numberG"></label><br>
+        <div class="conteiner">
+            <div class="message1" onclick="showMult()">Найти произведение чисел</div>
+        </div>
     </main>
 
     <footer ondblclick="showM3()">
