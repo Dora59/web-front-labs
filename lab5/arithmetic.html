@@ -8,8 +8,11 @@
     <link rel="shortcut icon" href="C:\Users\User\web-front-labs\lab3\apple-touch-icon.png" type="image/x-icon">
     <script>
         function showSum() {
-            let a = 5874;
-            let b = 6974;
+            let inputA = document.getElementById('numberA');
+            let inputB = document.getElementById('numberB');
+
+            let a = parseInt(inputA.value);
+            let b = parseInt(inputB.value);
             let result = a + b;
             alert(' Сумма ' + a + ' и ' + b + ' равна ' + result);
         }
@@ -66,8 +69,10 @@
     </header>
 
     <main>
+        <label>Первое число: <input type="number" value="5874" id="numberA"></label><br>
+        <label>Второе число: <input type="number" value="6974" id="numberB"></label><br>
         <div class="conteiner">
-            <div class="message" onclick="showSum()">Сколько будет 5874+6974?</div>
+            <div class="message" onclick="showSum()">Найти сумму чисел</div>
             <div class="message" onclick="showAuthor()">Узнать, кто автор страницы</div>
         </div>    
     </main>
