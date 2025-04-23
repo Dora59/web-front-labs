@@ -6,6 +6,77 @@
     <title>Корзина</title>
     <link rel="stylesheet" href="../main.css">
     <link rel="shortcut icon" href="C:\Users\User\web-front-labs\lab3\apple-touch-icon.png" type="image/x-icon">
+    <script>
+        //исчезновение круга при клике
+        function createCircle(event) {
+            event.target.style.transform = 'scale(0)';
+            event.target.style.opacity = '0';
+        }
+
+        function reset() {
+            document.querySelectorAll('.circle').forEach(circle => {
+                circle.style.transform = 'scale(1)';
+                circle.style.opacity = '1';
+            });
+        }
+
+        function positionCircle() {
+            return Math.floor(Math.random() * 400) + 'px';
+        }
+
+        window.onload = function() {
+            document.querySelectorAll('.circle').forEach(circle => {
+                circle.style.top = positionCircle();
+                circle.style.left = positionCircle();
+            });
+        };
+    </script>
+
+    <style>
+        main {
+            display: flex; 
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .container {
+            width: 500px;
+            height: 500px;
+            position: relative;
+            overflow: hidden;
+            margin-bottom: 20px;
+        }
+
+        .circle {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            display: flex;
+            color: black;
+            justify-content: center;
+            align-items: center;
+            font-size: 24px;
+            font-weight: bolder;
+            cursor: pointer;
+            position: absolute;
+            top: 0;
+            left: 0;
+            transform: translate(0, 0);
+            transition: transform 1s, opacity 0.6s;
+            border: 3px solid rgba(238, 59, 116, 0.767);
+        }
+
+        button {
+            padding: 10px 10px;
+            background-color: blueviolet;
+            color: white;
+            font-size: 17px;
+            font-weight: bolder;
+            border: 2px solid black;
+            border-radius: 10px;
+            cursor: pointer;
+        }
+    </style>
 </head>
 
 <body>
@@ -14,9 +85,21 @@
     </header>
 
     <main>
-
+        <button onclick="reset()">Вернуть круги</button>
+        <div class="container">
+            <div class="circle" style="background-color: #ea6a6a;" onclick="createCircle(event)">1</div>
+            <div class="circle" style="background-color: #fff45f;" onclick="createCircle(event)">2</div>
+            <div class="circle" style="background-color: #94ee80;" onclick="createCircle(event)">3</div>
+            <div class="circle" style="background-color: #64f5ff;" onclick="createCircle(event)">4</div>
+            <div class="circle" style="background-color: #1486f1;" onclick="createCircle(event)">5</div>
+            <div class="circle" style="background-color: #a1ff6a;" onclick="createCircle(event)">6</div>
+            <div class="circle" style="background-color: #ff1bfb;" onclick="createCircle(event)">7</div>
+            <div class="circle" style="background-color: #935fe1;" onclick="createCircle(event)">8</div>
+            <div class="circle" style="background-color: #ff589d;" onclick="createCircle(event)">9</div>
+            <div class="circle" style="background-color: #3dfe4d;" onclick="createCircle(event)">10</div>
+        </div>
     </main>
-    
+
     <footer>
         &copy; Дарья Пятина, ФБИ-31, 2 курс, 2023
     </footer>
