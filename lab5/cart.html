@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Корзина</title>
+    <link rel="stylesheet" href="../main.css">
+    <link rel="shortcut icon" href="C:\Users\User\web-front-labs\lab3\apple-touch-icon.png" type="image/x-icon">
+    <script>
+        // Ждем загрузки DOM перед выполнением скрипта
+        document.addEventListener('DOMContentLoaded', function() {
+            // Получаем элементы после загрузки страницы
+            const calcBtn = document.getElementById('calculate-btn');
+            const clearBtn = document.getElementById('clear-btn');
+            const quantityInputs = document.querySelectorAll('.quantity');
+            const totalElement = document.getElementById('total-sum');
+
+            // Функция расчета общей суммы
+            function calculateTotal() {
+                let total = 0;
+                
+                for (let input of quantityInputs) {
+                    // Получаем количество (или 0 если пусто/не число)
+                    const quantity = parseInt(input.value) || 0;
+                    const price = parseInt(input.getAttribute('price'));
+                    total += quantity * price;
+                }
+
+                //результат
+                if (total > 0) {
+                    totalElement.textContent = `Итого к оплате: ${total.toLocaleString('ru-RU')} руб.`;
+                    totalElement.style.display = 'block';
+                } else {
+                    totalElement.textContent = 'Добавьте товары в корзину';
+                    totalElement.style.display = 'block';
+                }
+            }
+
+            // Функция очистки корзины
+            function clearCart() {
+                // Очищаем все поля ввода
+                for (let input of quantityInputs) {
+                    input.value = '';
+                }
+                // Скрываем блок с суммой
+                totalElement.style.display = 'none';
+            }
+
+            // Назначаем обработчики событий
+            calcBtn.addEventListener('click', calculateTotal);
+            clearBtn.addEventListener('click', clearCart);
+        });
+    </script>
+
+    <style>
+        /* Добавляем базовые стили для корзины */
+        h2 {
+            text-align: center;
+        }
+        .cart-item {
+            border: 2px solid #cf3df4;
+            padding: 5px;
+            margin-bottom: 15px;
+            border-radius: 5px;
+            text-align: center;
+        }
+        .quantity {
+            width: 200px;
+            padding: 5px;
+        }
+        .cart-actions {
+            margin-top: 15px;
+        }
+        .total-sum {
+            margin-top: 20px;
+            padding: 10px;
+            background-color: #f0f0f0;
+            border-radius: 15px;
+            display: none;
+        }
+
+        input[type="button"] {
+            cursor: pointer;
+            border: 2px solid lightpink;
+            font-size: 17px;
+            font-weight: bolder;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        НГТУ, ФБ, Лабораторная работа 5. Корзина.
+    </header>
+
+    <main>
+        <h2>Ваша корзина</h2>
+        <div class="cart-container">
+            <div class="cart-item">
+                <h3>Авокадо</h3>
+                <p>Цена: 149 руб./шт.</p>
+                <label>
+                    Количество:
+                    <input type="number" min="0" placeholder="Укажите нужное количество"
+                    class="quantity" price="149">
+                </label>
+            </div>
+
+            <div class="cart-item">
+                <h3>Бананы</h3>
+                <p>Цена: 60 руб./шт.</p>
+                <label>
+                    Количество:
+                    <input type="number" min="0" placeholder="Укажите нужное количество"
+                    class="quantity" price="60">
+                </label>
+            </div>
+            
+            <div class="cart-item">
+                <h3>Манго</h3>
+                <p>Цена: 229 руб./шт.</p>
+                <label>
+                    Количество:
+                    <input type="number" min="0" placeholder="Укажите нужное количество"
+                    class="quantity" price="229"> <!-- Исправлена цена -->
+                </label>
+            </div>
+            
+            <div class="cart-item">
+                <h3>Киви</h3>
+                <p>Цена: 45 руб./шт.</p>
+                <label>
+                    Количество:
+                    <input type="number" min="0" placeholder="Укажите нужное количество"
+                    class="quantity" price="45"> <!-- Исправлена цена -->
+                </label>
+            </div>
+            
+            <div class="cart-item">
+                <h3>Лайм</h3>
+                <p>Цена: 95 руб./шт.</p>
+                <label>
+                    Количество:
+                    <input type="number" min="0" placeholder="Укажите нужное количество"
+                    class="quantity" price="95"> 
+                </label>
+            </div>    
+
+            <div class="cart-actions">
+                <input type="button" id="calculate-btn" value="Рассчитать итоговую сумму">
+                <input type="button" id="clear-btn" value="Очистить корзину">
+            </div>
+
+            <div id="total-sum" class="total-sum"></div>
+        </div>
+    </main>
+
+    <footer>
+        &copy; Дарья Пятина, ФБИ-31, 2 курс, 2023
+    </footer>
+</body>
+</html>
