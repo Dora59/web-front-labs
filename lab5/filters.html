@@ -19,11 +19,26 @@
             applyFilters();
         }
 
+
         function applyFilters() {
             const blurValue = document.getElementById('blurValue').value + 'px';
             const brightnessValue = document.getElementById('brightnessValue').value + '%';
 
             document.getElementById('filteredImage').style.filter = `blur(${blurValue}) brightness(${brightnessValue})`;
+        }
+
+        function contrastChange() {
+            let value = document.getElementById('contrastValue').value + 'px';
+            document.getElementById('contrastOutput').innerText = value;
+            applyFilters();
+        }
+
+        function applyFilters() {
+            const blurValue = document.getElementById('blurValue').value + 'px';
+            const brightnessValue = document.getElementById('brightnessValue').value + '%';
+            const contrastValue = document.getElementById('contrastValue').value + '%';
+
+            document.getElementById('filteredImage').style.filter = `blur(${blurValue}) brightness(${brightnessValue}) contrast(${contrastValue})`;
         }
     </script>
 
@@ -57,6 +72,12 @@
                 Фильтр brightness:
                 <input type="range" min="0" max="500" value="100" onchange="brightnessChange()" id="brightnessValue">
                 <span id="brightnessOutput"></span>
+            </div>
+
+            <div>
+                Фильтр contrast:
+                <input type="range" min="0" max="500" value="100" onchange="contrastChange()" id="contrastValue">
+                <span id="contrastOutput"></span>
             </div>
 
             <div><img src="image.png" width="60%" id="filteredImage"></div>
