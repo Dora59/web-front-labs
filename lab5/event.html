@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Объект "Событие"</title>
+    <link rel="stylesheet" href="../main.css">
+    <link rel="shortcut icon" href="C:\Users\User\web-front-labs\lab3\apple-touch-icon.png" type="image/x-icon">
+    <script>
+        function showCoords(event) {
+            let x = event.offsetX;
+            let y = event.offsetY;
+            let div = document.getElementById('block');
+            
+            // Формируем текст с координатами и клавишами
+            let text = `<b>x</b> = ${x}px<br><b>y</b> = ${y}px`;
+            
+            if(event.ctrlKey) {
+                text += "<br>Нажата клавиша Ctrl";
+                div.style.backgroundColor = 'white';
+                div.style.color = 'red';
+            }
+            else if(event.altKey) {
+                text += "<br>Нажата клавиша Alt";
+                div.style.backgroundColor = 'orange';
+                div.style.border = '1px solid red';
+            }
+            else if(event.shiftKey) {
+                text += "<br>Нажата клавиша Shift";
+                div.style.backgroundColor = 'purple';
+                div.style.border = '1px solid blue';
+            }
+            else {
+                div.style.backgroundColor = 'yellow';
+                div.style.border = '1px solid orange';
+            }
+            
+            div.innerHTML = text;
+        }
+    </script>
+    <style>
+        .block1 {
+            border: 3px solid rgb(61, 200, 87);
+            background-color: rgb(134, 255, 158);
+            cursor: crosshair;
+            width: 150px;
+            height: 150px;
+            padding: 10px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        НГТУ, ФБ, Лабораторная работа 5. События.
+    </header>
+
+    <main>
+        <div class="block1" onmousemove="showCoords(event)">
+            <div id="block">Двигайте мышью в этом блоке</div>
+        </div>
+    </main>
+</body>
+</html>
