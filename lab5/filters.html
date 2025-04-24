@@ -37,15 +37,30 @@
             applyFilters();
         }
 
+        function invertChange() {
+            let value = document.getElementById('invertValue').value;
+            document.getElementById('invertOutput').innerText = value + '%';
+            applyFilters();
+        }
+
+        function saturateChange() {
+            let value = document.getElementById('saturateValue').value;
+            document.getElementById('saturateOutput').innerText = value + '%';
+            applyFilters();
+        }
+
         function applyFilters() {
             const blurValue = document.getElementById('blurValue').value + 'px';
             const brightnessValue = document.getElementById('brightnessValue').value + '%';
             const contrastValue = document.getElementById('contrastValue').value + '%';
             const grayscaleValue = document.getElementById('grayscaleValue').value + '%';
             const hueRotateValue = document.getElementById('hueRotateValue').value;
+            const invertValue = document.getElementById('invertValue').value + '%';
+            const saturateValue = document.getElementById('saturateValue').value + '%';
 
             document.getElementById('filteredImage').style.filter = `blur(${blurValue}) brightness(${brightnessValue}) 
-            contrast(${contrastValue}) grayscale(${grayscaleValue}) hue-rotate(${hueRotateValue}deg)`;
+            contrast(${contrastValue}) grayscale(${grayscaleValue}) hue-rotate(${hueRotateValue}deg) invert(${invertValue})
+            saturate(${saturateValue})`;
         }
     </script>
 
@@ -100,7 +115,19 @@
             <div>
                 Фильтр hue-rotate:
                 <input type="range" min="0" max="360" value="0" onchange="hueRotateChange()" id="hueRotateValue">
-                <span id="hueRotateOutput">0°</span>
+                <span id="hueRotateOutput"></span>
+            </div>
+
+            <div>
+                Фильтр invert:
+                <input type="range" min="0" max="100" value="0" onchange="invertChange()" id="invertValue">
+                <span id="invertOutput"></span>
+            </div>
+
+            <div>
+                Фильтр saturate:
+                <input type="range" min="0" max="500" value="100" onchange="saturateChange()" id="saturateValue">
+                <span id="saturateOutput"></span>
             </div>
 
             <div><img src="image.png" width="60%" id="filteredImage"></div>
