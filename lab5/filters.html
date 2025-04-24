@@ -19,17 +19,21 @@
             applyFilters();
         }
 
-
-        function applyFilters() {
-            const blurValue = document.getElementById('blurValue').value + 'px';
-            const brightnessValue = document.getElementById('brightnessValue').value + '%';
-
-            document.getElementById('filteredImage').style.filter = `blur(${blurValue}) brightness(${brightnessValue})`;
+        function contrastChange() {
+            let value = document.getElementById('contrastValue').value + '%';
+            document.getElementById('contrastOutput').innerText = value;
+            applyFilters();
         }
 
-        function contrastChange() {
-            let value = document.getElementById('contrastValue').value + 'px';
-            document.getElementById('contrastOutput').innerText = value;
+        function grayscaleChange() {
+            let value = document.getElementById('grayscaleValue').value + '%';
+            document.getElementById('grayscaleOutput').innerText = value;
+            applyFilters();
+        }
+
+        function hueRotateChange() {
+            let value = document.getElementById('hueRotateValue').value;
+            document.getElementById('hueRotateOutput').innerText = value + '°';
             applyFilters();
         }
 
@@ -37,8 +41,11 @@
             const blurValue = document.getElementById('blurValue').value + 'px';
             const brightnessValue = document.getElementById('brightnessValue').value + '%';
             const contrastValue = document.getElementById('contrastValue').value + '%';
+            const grayscaleValue = document.getElementById('grayscaleValue').value + '%';
+            const hueRotateValue = document.getElementById('hueRotateValue').value;
 
-            document.getElementById('filteredImage').style.filter = `blur(${blurValue}) brightness(${brightnessValue}) contrast(${contrastValue})`;
+            document.getElementById('filteredImage').style.filter = `blur(${blurValue}) brightness(${brightnessValue}) 
+            contrast(${contrastValue}) grayscale(${grayscaleValue}) hue-rotate(${hueRotateValue}deg)`;
         }
     </script>
 
@@ -52,6 +59,10 @@
             -webkit-appearance: none;
             background-color: pink;
             border-radius: 50px;
+        }
+
+        #filteredImage {
+            transition: filter 0.6s ease;
         }
     </style>
 </head>
@@ -78,6 +89,18 @@
                 Фильтр contrast:
                 <input type="range" min="0" max="500" value="100" onchange="contrastChange()" id="contrastValue">
                 <span id="contrastOutput"></span>
+            </div>
+
+            <div>
+                Фильтр grayscale:
+                <input type="range" min="0" max="500" value="0" onchange="grayscaleChange()" id="grayscaleValue">
+                <span id="grayscaleOutput"></span>
+            </div>
+
+            <div>
+                Фильтр hue-rotate:
+                <input type="range" min="0" max="360" value="0" onchange="hueRotateChange()" id="hueRotateValue">
+                <span id="hueRotateOutput">0°</span>
             </div>
 
             <div><img src="image.png" width="60%" id="filteredImage"></div>
