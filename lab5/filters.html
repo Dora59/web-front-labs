@@ -4,6 +4,21 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Фильтры</title>
+    <link rel="stylesheet" href="../main.css">
+    <link rel="shortcut icon" href="C:\Users\User\web-front-labs\lab3\apple-touch-icon.png" type="image/x-icon">
+    <script>
+        function blurChange() {
+            let value = document.getElementById('blurValue').value + 'px';
+            document.getElementById('blurOutput').innerText = value;
+            document.getElementById('blurImage').style.filter = 'blur(' + value + ')';
+        }
+    </script>
+
+    <style>
+        .aa {
+            text-align: center;
+        }
+    </style>
 </head>
 <body>
     <header>
@@ -11,7 +26,14 @@
     </header>
 
     <main>
-
+        <div class="aa">
+            <div>
+                Фильтр blur:
+                <input type="range" min="0" max="20" value="0" onchange="blurChange()" id="blurValue">
+                <span id="blurOutput"></span>
+            </div>    
+            <div><img src="image.png" width="60%" id="blurImage"></div>
+        </div>    
     </main>
 
     <footer>
