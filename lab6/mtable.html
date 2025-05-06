@@ -5,26 +5,125 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Таблица умножения</title>
     <link rel="stylesheet" href="../main.css">
-    <link rel="shortcut icon" href="C:\Users\User\web-front-labs\lab3\apple-touch-icon.png" type="image/x-icon">
+    <link rel="shortcut icon" href="../favicon.ico" type="image/x-icon">
     <script>
-        function showMultipleTable() {
-            let tbl = document.getElementById('mtable');
-            tbl.innerHTML = '<h1>Таблица умножения</h1>';
-            for(i=1; i <= 10; i++) {
-                let s = `<div>${i} * 7 = ${i*7}</div>`;
-                tbl.innerHTML +=s
+        // Инициализация таблицы при загрузке
+        document.addEventListener('DOMContentLoaded', function() {
+            updateTable();
+        });
+
+        function updateTable() {
+            // Получаем значения из полей ввода
+            let multiplier = parseInt(document.getElementById('multiplier').value) || 7;
+            let start = parseInt(document.getElementById('start').value) || 1;
+            let end = parseInt(document.getElementById('end').value) || 10;
+            let errorMessage = document.getElementById('error-message');
+            
+            // Сбрасываем сообщение об ошибке
+            errorMessage.style.display = 'none';
+            
+            // Проверяем корректность диапазона
+            if (start > end) {
+                // Меняем значения местами
+                [start, end] = [end, start];
+                
+                // Обновляем значения в полях ввода
+                document.getElementById('start').value = start;
+                document.getElementById('end').value = end;
+                
+                // Показываем сообщение об ошибке
+                errorMessage.style.display = 'block';
+                
+                // Через 3 секунды скрываем сообщение
+                setTimeout(() => {
+                    errorMessage.style.display = 'none';
+                }, 3000);
+            }
+            
+            // Генерируем новую таблицу
+            generateTable(multiplier, start, end);
+        }
+
+        function generateTable(multiplier, start, end) {
+            let tableContent = document.getElementById('table-content');
+            tableContent.innerHTML = '';
+            
+            // Генерируем строки таблицы
+            for(let i = start; i <= end; i++) {
+                let row = document.createElement('div');
+                row.textContent = `${i} × ${multiplier} = ${i * multiplier}`;
+                tableContent.appendChild(row);
             }
         }
-        showMultipleTable();
     </script>
+    <style>
+        .controls {
+            margin-top: 20px;
+            padding: 15px;
+            background: #ffa8dd;
+            border-radius: 5px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+        .control-field {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+        
+        .control-field input {
+            width: 50px;
+            padding: 5px;
+            text-align: center;
+        }
+
+        .controls button {
+            padding: 5px 15px;
+            cursor: pointer;
+            background: #c816bc;
+            color: white;
+            border: none;
+            border-radius: 3px;
+        }
+        .error-message {
+            color: red;
+            margin-top: 5px;
+            display: none;
+        }
+    </style>
 </head>
-<body onload="showMultipleTable()">
+<body>
     <header>
         НГТУ, ФБ, Лабораторная работа 6
     </header>
 
     <main>
-        <div id="mtable"></div>
+        <div id="mtable">
+            <h1>Таблица умножения</h1>
+            <div id="table-content">
+                <!-- Здесь будет генерироваться таблица -->
+            </div>
+            <div class="controls">
+                <div class="control-field">
+                    <span>Умножить на:</span>
+                    <input type="number" id="multiplier" value="7" min="1">
+                </div>
+                <div class="control-field">
+                    <span>Начать с:</span>
+                    <input type="number" id="start" value="1" min="1">
+                </div>
+                <div class="control-field">
+                    <span>Закончить на:</span>
+                    <input type="number" id="end" value="10" min="1">
+                </div>
+                <button onclick="updateTable()">Таблица</button>
+            </div>
+            <div id="error-message" class="error-message">
+                Ошибка: "Начать с" не может быть больше чем "Закончить на". Значения были автоматически поменяны местами.
+            </div>
+        </div>
     </main>
 
     <footer>
