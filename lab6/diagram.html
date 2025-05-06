@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Диаграмма</title>
+    <link rel="stylesheet" href="../main.css">
+    <link rel="shortcut icon" href="C:\Users\User\web-front-labs\lab3\apple-touch-icon.png" type="image/x-icon">
+    <script>
+        function showDiagram() {
+            let data = [36, 86, 55, 28, 92, 60, 41, 17, 9, 43];
+            let bars = document.getElementsByClassName('bar');
+            const diagHeight = document.getElementById('diag').clientHeight;
+            let colors = ['pink', 'lightblue', 'lightgreen', 'purple', '#DEB887', 'fuchsia', 'orange', 'blue', '#40E0D0', '#FF1493']
+            const maxData = Math.max(...data);
+            const k = diagHeight / maxData * 0.9;
+            for(let i = 0; i < data.length; i++) {
+                bars[i].style.height = k*data[i] + 'px';
+                bars[i].textContent = data[i];
+                bars[i].style.backgroundColor = colors[i];
+            }
+        }
+    </script>
+    <style>
+        #diag { 
+            display: flex; 
+            height: 500px; 
+            align-items: flex-end; 
+            gap: 10px; 
+            margin: 20px 0; 
+            padding-bottom: 20px; 
+        }
+        .bar { 
+            flex: 1; 
+            background: #4682B4; 
+            min-width: 40px;
+            text-align: center; 
+            color: rgb(0, 0, 0); 
+            font-weight: bold; 
+            border-radius: 5px ;
+            border: 1px solid #778899;
+            box-shadow: 3px 3px 4px #EE82EE;
+        }
+    </style>
+</head>
+<body onload="showDiagram()">
+    <header>
+        НГТУ, ФБ, Лабораторная работа 6
+    </header>
+
+    <main>
+        <div id="diag">
+            <div class="bar"></div> 
+            <div class="bar"></div>
+            <div class="bar"></div>
+            <div class="bar"></div>
+            <div class="bar"></div>
+            <div class="bar"></div>
+            <div class="bar"></div>
+            <div class="bar"></div>
+            <div class="bar"></div>
+            <div class="bar"></div>
+        </div>
+    </main>
+
+    <footer>
+        &copy; Дарья Пятина, ФБИ-31, 2 курс, 2023
+    </footer>
+</body>
+</html>
