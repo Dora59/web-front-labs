@@ -40,9 +40,9 @@ const books = [
         publicationYear: 2020,
     }, 
     {
-        author: '',
-        name: '',
-        publicationYear: ,
+        author: 'Федор Михайлович Достоевский',
+        name: 'Игрок',
+        publicationYear:1866,
     }, 
     {
         author: 'Чехов Антон',
