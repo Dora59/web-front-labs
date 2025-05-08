@@ -52,8 +52,41 @@
             content: "🇨🇳";
             margin-right: 10px;
         }
+
+        header {
+            transition: color 0.5s ease;
+        }
+
+        .button-group {
+            display: flex;
+            gap: 10px;
+            margin-top: 20px;
+        }
+
+        button {
+            padding: 8px 16px;
+            border: none;
+            border-radius: 4px;
+            background-color: #6a3093;
+            color: white;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: #8e44ad;
+        }
+
+        button:disabled {
+            background-color: #bdc3c7;
+            cursor: not-allowed;
+        }
     </style>
     <script>
+        let colorTimer;
+        let dateTimer;
+        let isUpdating = false;
+
         function showDate() {
             const today = new Date();
             
@@ -72,6 +105,45 @@
             document.getElementById('current-date5').innerHTML = 
                 'Китай: ' + today.toLocaleString('zh');
         }
+
+        function ChangeColors() {
+            const header = document.getElementsByTagName('header')[0];
+            const rgb = `rgb(${Math.random() * 255}, ${Math.random() * 255}, ${Math.random() * 255})`;
+            header.style.color = rgb;
+        }
+
+        let timerNum;
+
+        function startChangeColors() {
+            ChangeColors();
+            timerNum = setInterval(ChangeColors, 1000);
+            setInterval(ChangeColors, 1000);
+            document.getElementById('start-btn').disabled = true;
+            document.getElementById('stop-btn').disabled = false;
+        }
+
+        function stopChangeColors() {
+            clearInterval(colorTimer);
+            document.getElementById('start-btn').disabled = false;
+            document.getElementById('stop-btn').disabled = true;
+        }
+
+        function startUpdatingTime() {
+            if (!isUpdating) {
+                showDate(); // Сразу показываем актуальное время
+                dateTimer = setInterval(showDate, 1000); // Обновление каждую секунду
+                isUpdating = true;
+                document.getElementById('update-time-btn').disabled = true;
+                document.getElementById('stop-time-btn').disabled = false;
+            }
+        }
+
+        function stopUpdatingTime() {
+            clearInterval(dateTimer);
+            isUpdating = false;
+            document.getElementById('update-time-btn').disabled = false;
+            document.getElementById('stop-time-btn').disabled = true;
+        }
     </script>
 </head>
 <body onload="showDate()">
@@ -85,6 +157,15 @@
         <div id="current-date3"></div>
         <div id="current-date4"></div>
         <div id="current-date5"></div>
+        <div>
+            <button onclick="startChangeColors()">Старт</button>
+            <button onclick="startChangeColors()">Стоп</button>
+        </div>
+
+        <div class="button-group">
+            <button id="update-time-btn" onclick="startUpdatingTime()">Обновлять время</button>
+            <button id="stop-time-btn" onclick="stopUpdatingTime()">Остановить обновление</button>
+        </div>
     </main>
 
     <footer>
