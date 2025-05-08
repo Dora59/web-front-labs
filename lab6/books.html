@@ -10,18 +10,56 @@
     <script>
         function showBooks() {
             const bookList = document.getElementById('bookList');
-            for(let i = 0; i < books.lenght; i++) {
-                bookList.innerHTML += `
-                    <div>
-                        <b>${ books[i].author }.</b>
-                        <i>${ books[i].name }.</i>
-                        &mdash; ${ books[i].publicationYear }
-                    </div>
-                `
-            }
+            
+            books.forEach(book => {
+                const bookDiv = document.createElement('div');
+                bookDiv.classList.add('book');
+                book.price = book.price || "500 ₽";
+                book.bestseller = book.bestseller || false;
+                book.inStock = book.inStock || true;
+
+                if (book.bestseller) {
+                    bookDiv.classList.add('bestseller');
+                }
+                if (!book.inStock) {
+                    bookDiv.classList.add('out-of-stock');
+                }
+
+                bookDiv.innerHTML = `
+                    <b>${book.author}.</b>
+                    <i>${book.name}.</i>
+                    — ${book.publicationYear}
+                    <span class="price">${book.price}</span>
+                    ${!book.inStock ? '<span class="stock-info">(Нет в наличии)</span>' : ''}
+                    ${book.bestseller ? '<span class="bestseller-tag">Бестселлер</span>' : ''}
+                `;
+
+                bookList.appendChild(bookDiv);
+            });
         }
     </script>
     <style>
+        .book {
+            margin: 10px 0;
+            padding: 10px;
+            border-bottom: 1px solid #4cb0f3;
+        }
+        .bestseller {
+            background-color: #edcdff;
+        }
+        .out-of-stock {
+            opacity: 0.6;
+        }
+        .price {
+            font-weight: bold;
+        }
+        .bestseller-tag {
+            background: rgb(255, 224, 51);
+            padding: 2px 5px;
+            border-radius: 5px;
+            font-size: 14px;
+            color: red;
+        }
     </style>
 </head>
 <body onload="showBooks()">
@@ -31,8 +69,7 @@
 
     <main>
         <h1>Список книг</h1>
-        <div id="bookList">
-        </div>
+        <div id="bookList"></div>
     </main>
 
     <footer>
