@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Температуры за месяц</title>
+    <link rel="stylesheet" href="../main.css">
+    <link rel="shortcut icon" href="C:\Users\User\web-front-labs\lab3\apple-touch-icon.png" type="image/x-icon">
+    <style>
+        
+        h1 {
+            text-align: center;
+            color: #000000;
+            margin-bottom: 30px;
+        }
+        
+        .chart {
+            display: flex;
+            height: 500px;
+            align-items: flex-end;
+            width: 100%;
+            gap: 2px;
+        }
+        
+        .day {
+            flex: 1;
+            min-width: 30px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        
+        .temp-bar {
+            width: 25px;
+            position: relative;
+        }
+        
+        .min {
+            background-color: #2aa0ef;
+        }
+        
+        .max {
+            background-color: #ec4c4c;
+        }
+        
+        .temp-value {
+            position: absolute;
+            width: 100%;
+            text-align: center;
+            font-size: 12px;
+            font-weight: bold;
+            color: white;
+        }
+        
+        .min .temp-value {
+            top: 15px;
+        }
+        
+        .max .temp-value {
+            bottom: 15px;
+        }
+        
+        .day-number {
+            margin-top: 5px;
+            font-size: 12px;
+        }
+        
+        .selected .min {
+            background-color: #0d60aa;
+            box-shadow: 0 0 5px #073760;
+        }
+        
+        .selected .max {
+            background-color: #d10d0d;
+            box-shadow: 0 0 5px #ff5252;
+        }
+        
+        .controls {
+            text-align: center;
+            margin: 20px 0;
+        }
+        
+        input {
+            padding: 8px;
+            width: 50px;
+            text-align: center;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+        
+        .info {
+            background: #f5f5f5;
+            padding: 15px;
+            border-radius: 5px;
+            text-align: center;
+            display: none;
+            max-width: 300px;
+            margin: 20px auto;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        НГТУ, ФБ, Лабораторная работа 6
+    </header>
+
+    <div class="container">
+        <h1>Температуры за апрель</h1>
+        
+        <div class="chart" id="chart"></div>
+        
+        <div class="controls">
+            <label>Выберите день (1-30): </label>
+            <input type="number" id="day-select" min="1" max="30">
+        </div>
+        
+        <div class="info" id="info">
+            <p>День <span id="selected-day"></span>:
+               <span id="selected-min"></span>°C / 
+               <span id="selected-max"></span>°C</p>
+        </div>
+    </div>
+
+    <footer>
+        &copy; Дарья Пятина, ФБИ-31, 2 курс, 2023
+    </footer>
+
+    <script>
+        // Случайные температуры для 30 дней
+        const days = [];
+        for (let i = 0; i < 30; i++) {
+            days.push({
+                min: Math.floor(Math.random() * 10) + 8,   
+                max: Math.floor(Math.random() * 10) + 18    
+            });
+        }
+        
+        // Создаем диаграмму
+        const chart = document.getElementById('chart');
+        
+        days.forEach((day, index) => {
+            const dayElement = document.createElement('div');
+            dayElement.className = 'day';
+            dayElement.dataset.day = index + 1;
+            
+            // Вычисляем высоту столбцов (15px на 1°C)
+            const minHeight = day.min * 15;
+            const maxHeight = (day.max - day.min) * 15;
+            
+            dayElement.innerHTML = `
+                <div class="temp-bar min" style="height:${minHeight}px">
+                    <span class="temp-value">${day.min}°C</span>
+                </div>
+                <div class="temp-bar max" style="height:${maxHeight}px">
+                    <span class="temp-value">${day.max}°C</span>
+                </div>
+                <div class="day-number">${index + 1}</div>
+            `;
+            
+            chart.appendChild(dayElement);
+        });
+        
+        // Обработка выбора дня
+        const daySelect = document.getElementById('day-select');
+        const info = document.getElementById('info');
+        
+        daySelect.addEventListener('input', function() {
+            const dayNum = parseInt(this.value);
+            if (dayNum < 1 || dayNum > 30) {
+                info.style.display = 'none';
+                return;
+            }
+            
+            // Убираем выделение у всех дней
+            document.querySelectorAll('.day').forEach(day => {
+                day.classList.remove('selected');
+            });
+            
+            // Выделяем выбранный день
+            const selectedDay = document.querySelector(`.day[data-day="${dayNum}"]`);
+            if (selectedDay) {
+                selectedDay.classList.add('selected');
+                
+                // Показываем информацию
+                const dayData = days[dayNum - 1];
+                document.getElementById('selected-day').textContent = dayNum;
+                document.getElementById('selected-min').textContent = dayData.min;
+                document.getElementById('selected-max').textContent = dayData.max;
+                
+                info.style.display = 'block';
+            }
+        });
+    </script>
+</body>
+</html>
+           
