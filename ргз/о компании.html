@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>О компании - Рязанская ЭСК</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            color: #333;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        h1, h2 {
+            color: #2f83d2;
+        }
+        .logo {
+            text-align: center;
+            margin: 20px 0;
+        }
+        .logo img {
+            max-width: 200px;
+            box-shadow: 3px 3px 10px #2f83d2 ;
+        }
+        .section {
+            margin-bottom: 40px;
+            padding: 10px;
+        }
+    
+        .back-to-top {
+            position: fixed;
+            bottom: 60px;
+            right: 20px;
+            background-color: #131ccf;
+            color: white;
+            width: 50px;
+            height: 50px;
+            text-align: center;
+            line-height: 50px;
+            border-radius: 50%;
+            text-decoration: none;
+            font-size: 24px;
+            z-index: 1000;
+        }
+        .back-to-top:hover {
+            background-color: #12a3cb;
+        }
+        .image-gallery {
+            display: flex;
+            text-align: center;
+            height: 250px;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin: 20px 0;
+        }
+        .image-gallery img {
+            max-width: 500px;
+            border-radius: 5px;
+            box-shadow: 1px 2px 7px rgba(83, 80, 80, 0.747);
+            text-align: center;
+        }
+        .highlight {
+            background-color: #83e3f458;
+            padding: 20px;
+            border-left: 4px solid #277dd4c5;
+            margin: 20px 0;
+        }
+        footer {
+            background-color: #2f83d2;
+            color: rgb(0, 0, 0);
+            text-align: right;
+            padding: 10px;
+            position: fixed;
+            bottom: 0;
+            right: 0;
+            left: 0;
+            font-size: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="logo">
+            <img src="логотип.jpg">
+        </div>
+
+        <div class="section" id="about">
+            <h1>О компании</h1>
+            <p><b>Рязанская энергетическая сбытовая компания (Рязанская ЭСК)</b> - ведущий поставщик энергетических услуг в Рязанской области, обеспечивающий надежное и качественное энергоснабжение потребителей.</p>
+            
+            <div class="highlight">
+                <h2>Направления деятельности</h2>
+                <ul>
+                    <li>Продажа электрической энергии населению и предприятиям</li>
+                    <li>Техническое обслуживание энергетического оборудования</li>
+                    <li>Энергосервисные и энергосберегающие технологии</li>
+                    <li>Консультационные услуги в сфере энергетики</li>
+                </ul>
+            </div>
+
+            <div class="image-gallery">
+                <img src="офис.jpg">
+            </div>
+        </div>
+
+        <div class="section" id="history">
+            <h2>История компании</h2>
+            <p>
+                <u>Рязанская ЭСК была основана в 2005 году</u> в результате реорганизации энергетического 
+                комплекса Рязанской области. Компания стала правопреемником энергосбытовых функций 
+                областных энергетических предприятий.
+            </p>
+            
+            <p><i>За годы работы компания прошла значительный путь развития:</i></p>
+            
+            <ul>
+                <li><strong>2005 год</strong> - создание компании, начало работы с первыми клиентами</li>
+                <li><strong>2010 год</strong> - внедрение автоматизированной системы учета энергопотребления</li>
+                <li><strong>2015 год</strong> - запуск программы энергосбережения для промышленных предприятий</li>
+                <li><strong>2020 год</strong> - цифровая трансформация клиентских сервисов</li>
+            </ul>
+
+            <p>
+                Сегодня Рязанская ЭСК обслуживает более <b>500 тысяч потребителей</b>, включая население, предприятия
+                малого и среднего бизнеса, крупные промышленные организации.
+            </p>
+        </div>
+
+        <div class="section" id="founders">
+            <h2>Основатели и руководство</h2>
+            <p>Компания была создана при участии:</p>
+            
+            <ul>
+                <li>Правительства Рязанской области</li>
+                <li>Крупнейших энергетических предприятий региона</li>
+                <li>Инвестиционных фондов энергетического сектора</li>
+            </ul>
+
+            <p>
+                Текущее руководство компанией осуществляет команда профессиональных 
+                управленцев с многолетним опытом работы в энергетической отрасли.
+            </p>
+
+            <div class="highlight">
+                <p>
+                    "Наша миссия - обеспечивать надежное и качественное энергоснабжение потребителей, 
+                    способствуя экономическому развитию Рязанской области" - <i>генеральный директор Рязанской ЭСК</i>.
+                </p>
+            </div>
+
+            <p>
+                Подробнее о деятельности компании можно 
+                узнать на <a href="https://resk.ru">официальном сайте Рязанской ЭСК</a>.
+            </p>
+        </div>
+    </div>
+
+    <a href="#about" class="back-to-top" title="Наверх">↑</a>
+
+    <script>
+        // Плавная прокрутка к якорям
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+
+    <footer>
+        &copy; Рязанская ЭСК
+    </footer>
+</body>
+</html>
