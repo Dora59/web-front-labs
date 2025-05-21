@@ -3,18 +3,114 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Котировки акций VKCO.</title>
+    <title>Котировки акций VK Group</title>
     <link rel="stylesheet" href="../main.css">
     <link rel="shortcut icon" href="C:\Users\User\web-front-labs\lab3\apple-touch-icon.png" type="image/x-icon">
+    <style>
+        table {
+            width: 75%;
+            border: 2px solid blue;
+            margin: auto;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: center;
+        }
+        th {
+            background-color: #0077FF;
+            color: white;
+        }
+        .positive { color: green; font-weight: bold; }
+        .negative { color: red; font-weight: bold; }
+        button {
+            padding: 10px 20px;
+            margin: 20px;
+            background-color: #0077FF;
+            color: white;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 17px;
+        }
+    </style>
 </head>
 <body>
-    <header>
-        НГТУ, ФБ, Лабораторная работа 7. Котировки акций VKCO
+    
+     <header>
+        НГТУ, ФБ, Лабораторная работа 7
     </header>
 
     <main>
-        
+        <button onclick="loadStockData()">Показать котировки VK Group</button>
+        <table>
+            <thead>
+                <tr>
+                    <th>Дата</th>
+                    <th>Цена (руб)</th>
+                    <th>Изменение</th>
+                </tr>
+            </thead>
+            <tbody id="stock-data"></tbody>
+        </table>
     </main>
+
+    <script src="vkco.js"></script>
+    <script>
+        function loadStockData() {
+            const tbody = document.getElementById('stock-data');
+            tbody.innerHTML = '';
+            
+            let sum = 0;
+            let min = stockData.prices[0];
+            let max = stockData.prices[0];
+            
+            stockData.prices.forEach((price, index) => {
+                const row = document.createElement('tr');
+                
+                // Дата
+                const dateCell = document.createElement('td');
+                dateCell.textContent = stockData.dates[index];
+                row.appendChild(dateCell);
+                
+                // Цена
+                const priceCell = document.createElement('td');
+                priceCell.textContent = price.toFixed(2);
+                row.appendChild(priceCell);
+                
+                // Изменение
+                const changeCell = document.createElement('td');
+                if (index === 0) {
+                    changeCell.textContent = '—';
+                } else {
+                    const change = price - stockData.prices[index - 1];
+                    changeCell.textContent = change.toFixed(2);
+                    changeCell.className = change > 0 ? 'positive' : (change < 0 ? 'negative' : '');
+                }
+                row.appendChild(changeCell);
+                
+                tbody.appendChild(row);
+                
+                // Статистика
+                sum += price;
+                if (price < min) min = price;
+                if (price > max) max = price;
+            });
+            
+            // Добавляем строку с итогами
+            const summaryRow = document.createElement('tr');
+            summaryRow.innerHTML = `
+                <td colspan="3">
+                    Среднее: ${(sum / stockData.prices.length).toFixed(2)} руб | 
+                    Мин: ${min.toFixed(2)} руб | 
+                    Макс: ${max.toFixed(2)} руб
+                </td>
+            `;
+            tbody.appendChild(summaryRow);
+            
+            // Скрываем кнопку после загрузки
+            document.querySelector('button').style.display = 'none';
+        }
+    </script>
 
     <footer>
         &copy; Дарья Пятина, ФБИ-31, 2 курс, 2023
