@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Курс доллара</title>
+    <link rel="stylesheet" href="../main.css">
+    <link rel="shortcut icon" href="C:\Users\User\web-front-labs\lab3\apple-touch-icon.png" type="image/x-icon">
+</head>
+    <script>
+        function showExchange() {
+            const exchange = [
+                81.9137, 80.9644, 80.8612, 80.8883, 80.5500, 80.2237, 80.3134, 80.7689,
+                80.4137, 80.3075
+            ];
+            let table = document.getElementById('dollar-table');
+            for(let i = 0; i < exchange.length; i++) {
+                let tr = document.createElement('tr');
+                let td = document.createElement('td');
+                td.innerText = exchange[i];
+                tr.appendChild(td);
+                table.appendChild(tr);
+            }
+
+            let sum = 0;
+            for(let i = 0; i< exchange.length; i++) {
+                sum += exchange[i];
+            }
+            let average = sum / exchange.length;
+            average = average.toFixed(2);
+        }
+
+    </script>
+<body>
+    <header>
+        НГТУ, ФБ, Лабораторная работа 7. Курс доллара.
+    </header>
+
+    <main>
+       <button onclick="showExchange()">Курс доллара</button>
+       <table border="1" id="dollar-table"></table>
+       <div id="detail"></div> //итоги таблицы
+    </main>
+
+    <footer>
+        &copy; Дарья Пятина, ФБИ-31, 2 курс, 2023
+    </footer>
+</body>
+</html>
