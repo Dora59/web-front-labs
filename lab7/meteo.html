@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Прогноз погоды в Новосибирске</title>
+    <link rel="stylesheet" href="../main.css">
+    <link rel="shortcut icon" href="C:\Users\User\web-front-labs\lab3\apple-touch-icon.png" type="image/x-icon">
+    <style>
+       
+        h1 {
+            color: #1a73e8;
+            text-align: center;
+        }
+        button {
+            display: block;
+            margin: 20px auto;
+            padding: 10px 20px;
+            background-color: #1a73e8;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            font-size: 18px;
+            cursor: pointer;
+        }
+        .weather-container {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 8px;
+            margin-top: 20px;
+        }
+        .weather-item {
+            margin-bottom: 15px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid #e0e0e0;
+        }
+        .time {
+            font-weight: bold;
+            color: #202124;
+        }
+        .temp {
+            font-size: 18px;
+            color: #1a73e8;
+        }
+        .loading {
+            text-align: center;
+            color: #5f6368;
+            font-style: italic;
+        }
+        .error {
+            color: #d32f2f;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        HTTP, ФБ, Прогноз погоды
+    </header>
+    <main>
+        <h1>Прогноз погоды в Новосибирске</h1>
+        <button onclick="getWeather()">Получить прогноз</button>
+        <div id="weatherResult" class="weather-container">
+
+        </div>
+    </main>
+    <footer>
+        &copy; Дарья Пятина, ФБИ-31, 2 курс, 2023
+    </footer>
+
+    <script>
+        function getWeather() {
+            const weatherResult = document.getElementById('weatherResult');
+            weatherResult.innerHTML = '<p class="loading">Загрузка данных о погоде...</p>';
+            
+            // Координаты Новосибирска
+            const latitude = 55.0415;
+            const longitude = 82.9346;
+            
+            // URL для запроса прогноза погоды (только температура)
+            const url = `https://api.open-meteo.com/v1/forecast?latitude=55.0415&longitude=82.9346&hourly=temperature_2m&timezone=Asia%2FBangkok`;
+            
+            fetch(url)
+                .then(response => {
+                    if (!response.ok) throw new Error('Ошибка сервера: ' + response.status);
+                    return response.json();
+                })
+                .then(data => {
+                    if (!data.hourly || !data.hourly.time) {
+                        throw new Error('Неполные данные от сервера');
+                    }
+                    displayWeather(data);
+                })
+                .catch(error => {
+                    console.error('Ошибка:', error);
+                    weatherResult.innerHTML = `
+                        <p class="error">Не удалось получить данные о погоде</p>
+                        <p>${error.message}</p>
+                        <p>Попробуйте позже или проверьте консоль (F12)</p>
+                    `;
+                });
+        }
+
+        function displayWeather(data) {
+            const weatherResult = document.getElementById('weatherResult');
+            
+            // Находим данные для 8:00, 12:00 и 20:00 текущего дня
+            const today = new Date().toISOString().split('T')[0];
+            const times = data.hourly.time;
+            const temps = data.hourly.temperature_2m;
+            
+            const morningIndex = times.findIndex(t => t.includes(`${today}T08:00`));
+            const noonIndex = times.findIndex(t => t.includes(`${today}T12:00`));
+            const eveningIndex = times.findIndex(t => t.includes(`${today}T20:00`));
+            
+            // Проверяем, что индексы найдены
+            if (morningIndex === -1 || noonIndex === -1 || eveningIndex === -1) {
+                weatherResult.innerHTML = '<p class="error">Данные для текущего дня не найдены</p>';
+                return;
+            }
+            
+            weatherResult.innerHTML = `
+                <h2>Температура в Новосибирске сегодня</h2>
+                <div class="weather-item">
+                    <span class="time">Утро (8:00):</span>
+                    <span class="temp">${temps[morningIndex]}°C</span>
+                </div>
+                <div class="weather-item">
+                    <span class="time">День (12:00):</span>
+                    <span class="temp">${temps[noonIndex]}°C</span>
+                </div>
+                <div class="weather-item">
+                    <span class="time">Вечер (20:00):</span>
+                    <span class="temp">${temps[eveningIndex]}°C</span>
+                </div>
+                <p><small>Данные предоставлены Open-Meteo.com</small></p>
+            `;
+        }
+    </script>
+</body>
+</html>
