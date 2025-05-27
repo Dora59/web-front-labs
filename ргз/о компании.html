@@ -19,9 +19,11 @@
             max-width: 1200px;
             margin: 0 auto;
             padding: 20px;
+            padding-bottom: 60px;
         }
         h1, h2 {
             color: #2f83d2;
+            margin-bottom: 10px;
         }
         .logo {
             text-align: center;
@@ -29,11 +31,11 @@
         }
         .logo img {
             max-width: 200px;
-            box-shadow: 3px 3px 10px #2f83d2 ;
         }
-        .section {
-            margin-bottom: 40px;
-            padding: 10px;
+        .section p,
+        .section ul,
+        .section .highlight{
+            margin-top: 5px;
         }
     
         .back-to-top {
@@ -54,14 +56,7 @@
         .back-to-top:hover {
             background-color: #12a3cb;
         }
-        .image-gallery {
-            display: flex;
-            text-align: center;
-            height: 250px;
-            flex-wrap: wrap;
-            gap: 15px;
-            margin: 20px 0;
-        }
+        
         .image-gallery img {
             max-width: 500px;
             border-radius: 5px;
@@ -107,14 +102,13 @@
                 </ul>
             </div>
 
-            <div class="image-gallery">
+            <div class="image-gallery img">
                 <img src="офис.jpg">
             </div>
         </div>
 
         <div class="section" id="history">
             <h2>История компании</h2>
-            <img src="русгидро.jpg">
             <p>
                 ПАО «РусГидро» создано 26 декабря 2004 года в рамках осуществления государственной программы 
                 по реформированию электроэнергетики в соответствии с Распоряжением Правительства Российской 
@@ -125,6 +119,13 @@
                 гидрогенерирующая компания — РусГидро» полным фирменным наименованием Компании 
                 являлось Открытое акционерное общество «Федеральная гидрогенерирующая компания» (ОАО «ГидроОГК»).
             </p>
+            <p>
+                Компания создана в качестве 100-процентного дочернего общества ОАО РАО «ЕЭС России» с внесением в 
+                оплату уставного капитала акций АО-ГЭС и имущественных комплексов электростанций.
+            </p>
+            <div class="image-gallery img">
+                <img src="русгидро.jpg">
+            </div>
             <p>
                 <u>Рязанская ЭСК была основана в 2005 году</u> в результате реорганизации энергетического 
                 комплекса Рязанской области. Компания стала правопреемником энергосбытовых функций 
