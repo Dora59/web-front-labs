@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Курс CAD - Рязанская ЭСК</title>
+    <link rel="icon" href="favicon-16x16.png">
+    <link rel="icon" href="favicon-32x32.png">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        body {
+            font-family: Arial;
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        h1 {
+            color: #0066cc;
+            text-align: center;
+        }
+        .converter {
+            margin: 20px 0;
+            padding: 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+        input, select, button {
+            padding: 8px;
+            margin: 5px 0;
+            width: 97%;
+        }
+        button {
+            background: #0066cc;
+            color: white;
+            border: none;
+        }
+        
+        .chart-info {
+            padding: 10px;
+            background: #f0f8ff;
+            text-align: center;
+            display: none;
+        }
+        .menu {
+            display: flex;
+            justify-content: space-around;
+            margin-top: 30px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Курс CAD/RUB</h1>
+    
+    <div class="converter">
+        <input type="number" id="amount" value="100">
+        
+        <select id="from">
+            <option value="RUB">Рубли (RUB)</option>
+            <option value="CAD">CAD</option>
+        </select>
+        
+        <select id="to">
+            <option value="CAD">CAD</option>
+            <option value="RUB">Рубли (RUB)</option>
+        </select>
+        
+        <button onclick="convert()">Конвертировать</button>
+        
+        <h3 id="result"></h3>
+        <p id="rate"></p>
+    </div>
+
+    <canvas id="myChart"></canvas>
+    <div class="chart-info" id="chartInfo"></div>
+
+    <div class="menu">
+        <a href="about.html">О компании</a>
+        <a href="news.html">Новости</a>
+        <a href="currency.html" style="font-weight:bold">Курс</a>
+    </div>
+
+    <script>
+        // Данные для графика (даты и курсы)
+        const chartData = {
+            dates: ['06.05.2025', '14.05.2025', '15.05.2025', '17.05.2025', '24.05.2023', '28.05,2025'],
+            rates: [59.36, 57.54, 57.43, 57.75, 57.47, 57.98]
+        };
+        
+        // Текущий курс CAD (последний в массиве)
+        let cadRate = chartData.rates[chartData.rates.length - 1];
+        
+        // Инициализация графика
+        const ctx = document.getElementById('myChart').getContext('2d');
+        const chart = new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: chartData.dates,
+                datasets: [{
+                    label: 'CAD/RUB',
+                    data: chartData.rates,
+                    backgroundColor: '#0066cc'
+                }]
+            },
+            options: {
+                responsive: true,
+                onClick: (e, activeEls) => {
+                    if (activeEls.length > 0) {
+                        // Получаем индекс выбранного столбца
+                        const index = activeEls[0].index;
+                        
+                        // Сбрасываем цвет всех столбцов
+                        chart.data.datasets[0].backgroundColor = chartData.rates.map(() => '#0066cc');
+                        
+                        // Выделяем выбранный столбец
+                        chart.data.datasets[0].backgroundColor[index] = '#ff9900';
+                        chart.update();
+                        
+                        // Показываем информацию о курсе
+                        const infoDiv = document.getElementById('chartInfo');
+                        infoDiv.innerHTML = `Курс на ${chartData.dates[index]}: <b>${chartData.rates[index]} RUB</b>`;
+                        infoDiv.style.display = 'block';
+                        
+                        // Обновляем текущий курс для конвертера
+                        cadRate = chartData.rates[index];
+                        document.getElementById('rate').textContent = `1 CAD = ${cadRate} RUB`;
+                        convert();
+                    }
+                },
+                scales: {
+                    y: {
+                        beginAtZero: false
+                    }
+                }
+            }
+        });
+        
+        // Функция конвертации
+        function convert() {
+            const amount = parseFloat(document.getElementById('amount').value);
+            const from = document.getElementById('from').value;
+            const to = document.getElementById('to').value;
+            
+            let result;
+            if (from === 'RUB' && to === 'CAD') {
+                result = amount / cadRate;
+                document.getElementById('result').textContent = `${amount} RUB = ${result.toFixed(2)} CAD`;
+            } else {
+                result = amount * cadRate;
+                document.getElementById('result').textContent = `${amount} CAD = ${result.toFixed(2)} RUB`;
+            }
+        }
+        
+        // Инициализация
+        document.getElementById('rate').textContent = `1 CAD = ${cadRate} RUB`;
+        convert();
+    </script>
+</body>
+</html>
