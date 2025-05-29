@@ -18,7 +18,7 @@
         }
         
         .container {
-            max-width: 1200px;
+            max-width: 800px;
             margin: 0 auto;
             padding: 20px;
             padding-bottom: 80px; 
@@ -30,9 +30,9 @@
             margin-bottom: 30px;
         }
         
-        .news-container {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+        .news-list {
+            display: flex;
+            flex-direction: column;
             gap: 20px;
         }
         
@@ -141,8 +141,9 @@
 <body>
     <div class="container">
         <h1>Новости Рязанской ЭСК</h1>
-        <!-- Новость 1 -->
-        <div class="news-container">
+        
+        <div class="news-list">
+            <!-- Новость 1 -->
             <div class="news-card">
                 <div class="news-header">
                     <div class="news-date">14 мая 2025</div>
@@ -439,7 +440,6 @@
             </div>
         </div>
     </div>
-    
     
     <div class="bottom-menu">
         <div class="menu-container">
