@@ -90,6 +90,53 @@
         .back-to-top:hover {
             background-color: #1a6bb7;
         }
+
+        .bottom-menu {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background-color: #005b9f;
+            padding: 10px 0;
+            transition: all 0.3s ease;
+            height: 50px;
+            overflow: hidden;
+        }
+        
+        .bottom-menu:hover {
+            height: 80px;
+        }
+        
+        .menu-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .menu-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin: 0 15px;
+            color: white;
+            text-decoration: none;
+            transition: transform 0.3s;
+        }
+        
+        .menu-item:hover {
+            transform: scale(1.1);
+        }
+        
+        .menu-icon {
+            font-size: 24px;
+            margin-bottom: 5px;
+        }
+        
+        .menu-text {
+            font-size: 13px;
+        }
         
     </style>
 </head>
@@ -117,6 +164,31 @@
     </div>
     
     <a href="#" class="back-to-top" title="Наверх">↑</a>
+
+    <div class="bottom-menu">
+        <div class="menu-container">
+            <a href="о компании.html" class="menu-item">
+                <span class="menu-icon">🏢</span>
+                <span class="menu-text">О компании</span>
+            </a>
+            <a href="новости.html" class="menu-item current-page">
+                <span class="menu-icon">📰</span>
+                <span class="menu-text">Новости</span>
+            </a>
+            <a href="валюты.html" class="menu-item">
+                <span class="menu-icon">💱</span>
+                <span class="menu-text">Курс валют</span>
+            </a>
+            <a href="контакты.html" class="menu-item">
+                <span class="menu-icon">📞</span>
+                <span class="menu-text">Контакты</span>
+            </a>
+            <a href="видео.html" class="menu-item">
+                <span class="menu-icon">🎬</span>
+                <span class="menu-text">Видео</span>
+            </a>
+        </div>
+    </div>
     
     <script>
         // Плавная прокрутка к началу страницы
