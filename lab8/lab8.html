@@ -12,6 +12,7 @@
             margin: 2px;
             background-color: #FF69B4;
         }
+
     </style>
 </head>
 <body>
@@ -31,6 +32,15 @@
             <div>Имя: {{ user.name }}</div>
             <div>Возраст {{ user.age }}</div>
             <div>телефон: {{ user.tel }}</div>
+            <hr>
+
+            <h2>Цветы</h2>
+            <ul>
+                <li v-for="flower in flowers">
+                    {{ flower }}
+                </li>
+            </ul>
+            <hr>
         </div>
     </main>
 
@@ -50,6 +60,7 @@
                         age: '19',
                         tel: '255-35-65'
                     },
+                    flowers: ['пион', 'роза', 'одуванчик', 'гипсофилы', 'гортензии'],
                 }
             },
             
