@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Зачетик:)</title>
+    <link rel="shortcut icon" href="C:\Users\User\web-front-labs\lab3\apple-touch-icon.png" type="image/x-icon">
+    <style>
+        table {
+            position: absolute;
+            top: 0;
+            left: 0;
+            border: 5px;
+            cursor: pointer;
+        }
+        th, td {
+            border: 1px solid plum;
+            padding: 5px;
+            text-align: center;
+        }
+        th {
+            font-weight: bold;
+        }
+        main {
+            background-color: lightpink;
+        }
+    </style>
+</head>
+<body>
+    
+    <main>
+        <table id="table">
+            <tr>
+                <th>Фрукт</th>
+                <th>Цвет</th>
+            </tr>
+            <tr>
+                <td>Лимон</td>
+                <td>Желтый</td>
+            </tr>
+            <tr>
+                <td>Апельсин</td>
+                <td>Оранжевый</td>
+            </tr>
+            <tr>
+                <td>Киви</td>
+                <td>Зеленый</td>
+            </tr>
+        </table>
+    </main>
+    <script>
+        const table = document.getElementById('table');
+        table.onclick = () => {
+            table.style.top = 'auto';
+            table.style.left = 'auto';
+            table.style.bottom = '0';
+            table.style.right = '0';
+        }
+    </script>
+</body>
+</html>
